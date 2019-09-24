@@ -1,0 +1,148 @@
+---
+title: "DS_HW_1_MANDELI"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Question 1
+
+```{r}
+library(mosaic)
+```
+```{r}
+head(RailTrail)
+```
+a)
+
+```{r}
+ggplot(data=RailTrail)+
+  geom_point(aes(y=volume, x= hightemp))+
+  xlab('High Temperature')+
+  ylab('Number of Crossings per Day (Volume)')+
+  ggtitle('Scatterplot of Number of Crossings per Day (Volume) vs. High Temperature')
+
+```
+
+b)
+
+```{r}
+ggplot(data=RailTrail,aes(y=volume, x= hightemp))+
+  geom_point()+
+  xlab('High Temperature')+
+  ylab('Number of Crossings per Day (Volume)')+
+  ggtitle('Scatterplot of Number of Crossings per Day (Volume) vs. High Temperature')+
+  facet_wrap(~dayType)
+```
+
+c)
+
+```{r}
+ggplot(data=RailTrail,aes(y=volume, x= hightemp))+
+  geom_point()+
+  geom_smooth(method=lm)+
+  xlab('High Temperature')+
+  ylab('Number of Crossings per Day (Volume)')+
+  ggtitle('Scatterplot of Number of Crossings per Day (Volume) vs. High Temperature')+
+  facet_wrap(~dayType)
+  
+
+```
+d)
+
+When looking at the first plot one can see a somewhat weak positive linear relationship between high temperature and number of crossings. When the data is seperated by day type (weekday or weekend) we can see that there is a stonger positive linear relationship between high temperature and number of crossings in the weekday plot.
+
+
+Question 2
+
+```{r}
+head(Marriage)
+
+```
+a)
+```{r}
+ggplot(Marriage,aes(x= age, y=delay, color=race))+
+  geom_point()+
+  geom_smooth(method=lm)+
+  xlab('Age')+
+  ylab('Delay in Days from Application Date to Ceremony')+
+  ggtitle('Scatterplot of Age vs. Delay from Marriage App Date to Ceremony by Race')
+  
+
+```
+
+b)
+
+The scatterplot above aims to see if there is a correlation between age and a delay in marraige. A scatterplot was used to to plot the two quantitative variables. A further analysis was conducted to see to seperate the data points by race by using color= in ggplot. We can see that the majority of individuals in this data set were with and there was little to no corelation between age and delay in marriage for this group. The next majority race represented was black, here there was a negative linear relationship between age and delay in marriage. The other races had not enough data points (1 each) to generate a regression line.
+
+Question 3
+
+
+```{r}
+library(macleish)
+head(whately_2015)
+```
+
+
+```{r}
+
+library(tidyverse)
+
+
+```
+
+```{r}
+ggplot (whately_2015,aes(x= when, y=temperature))+
+  geom_line()+
+  geom_smooth(color="red")+
+  xlab('Time (10 Minute Intervals)')+
+  ylab('Temperature')+
+  ggtitle('Time vs. Temperature')
+  
+```
+
+
+Question 4
+
+
+```{r}
+library(maps)
+```
+
+```{r}
+head(whately_2015)
+```
+
+```{r}
+library(nasaweather)
+
+```
+a)
+
+```{r}
+
+ggplot(storms, aes(x=lat,y=long,color=name))+
+  geom_path()+
+  facet_wrap(~year)+
+  theme(legend.position = "none")+
+  xlab('Latitude')+
+  ylab('Longitude')+
+  ggtitle('Path of Tropical Storm')
+  
+```
+
+
+
+
+b)
+```{r}
+
+
+
+```
+
+
+
+
